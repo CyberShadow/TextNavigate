@@ -63,13 +63,14 @@ int CTextNavigate::ProcessEditorInput(const INPUT_RECORD* Rec)
     return 0;
 
   int res(0);
-  bool CtrlPressed = (Rec->Event.KeyEvent.dwControlKeyState & (RIGHT_CTRL_PRESSED | LEFT_CTRL_PRESSED)) != 0;
+  bool CtrlPressed  = (Rec->Event.KeyEvent.dwControlKeyState & (RIGHT_CTRL_PRESSED | LEFT_CTRL_PRESSED)) != 0;
+  bool AltPressed   = (Rec->Event.KeyEvent.dwControlKeyState & (RIGHT_ALT_PRESSED  | LEFT_ALT_PRESSED )) != 0;
+  bool ShiftPressed = (Rec->Event.KeyEvent.dwControlKeyState & SHIFT_PRESSED                           ) != 0;
 
   if (CtrlPressed)
   {
     FKeyCode = Rec->Event.KeyEvent.wVirtualKeyCode;
-    if (((FKeyCode == VK_UP) || (FKeyCode == VK_DOWN)) &&
-        (Rec->Event.KeyEvent.dwControlKeyState & (LEFT_ALT_PRESSED | RIGHT_ALT_PRESSED)))
+    if (((FKeyCode == VK_UP) || (FKeyCode == VK_DOWN)) && AltPressed)
     { //нажата Ctrl-Alt-Up/Down
       res = processCtrlAltUpDown(FKeyCode, FPrevKeyCode);
       FPrevKeyCode = FKeyCode;
@@ -82,13 +83,12 @@ int CTextNavigate::ProcessEditorInput(const INPUT_RECORD* Rec)
       FEditorState = esStateNormal;
       return processCtrlEnter();
     }
-    else if (((FKeyCode == VK_UP) || (FKeyCode == VK_DOWN)) &&
-            (Rec->Event.KeyEvent.dwControlKeyState & SHIFT_PRESSED))
+    else if (((FKeyCode == VK_UP) || (FKeyCode == VK_DOWN)) && ShiftPressed)
     {
       FEditorState = esStateNormal;
       return processCtrlShiftUpDown(FKeyCode);
     }
-    else if (FKeyCode == 'K' && CtrlPressed)
+    else if (FKeyCode == 'K' && CtrlPressed && !AltPressed && !ShiftPressed)
     {
       DebugString("Ctrl-K pressed");
       switch (FEditorState)
@@ -107,8 +107,7 @@ int CTextNavigate::ProcessEditorInput(const INPUT_RECORD* Rec)
       DrawTitle();
       return 1;
     }
-    else if (FKeyCode == 'N' &&
-        (Rec->Event.KeyEvent.dwControlKeyState & (RIGHT_CTRL_PRESSED | LEFT_CTRL_PRESSED)))
+    else if (FKeyCode == 'N' && CtrlPressed)
     {
       if (FEditorState == esCtrlKPressed)
       {
@@ -167,6 +166,7 @@ int CTextNavigate::ProcessEditorInput(const INPUT_RECORD* Rec)
       }
     }
     else if (Rec->Event.KeyEvent.dwControlKeyState & RIGHT_CTRL_PRESSED &&
+             !AltPressed && !ShiftPressed &&
              FKeyCode >= '0' && FKeyCode <= '9'
             )
     {
@@ -177,15 +177,16 @@ int CTextNavigate::ProcessEditorInput(const INPUT_RECORD* Rec)
       AddBookmark();
     }
     else if (Rec->Event.KeyEvent.dwControlKeyState & LEFT_CTRL_PRESSED &&
-      FKeyCode >= '0' && FKeyCode <= '9'
-      )
+             !AltPressed && !ShiftPressed &&
+             FKeyCode >= '0' && FKeyCode <= '9'
+            )
     {
 #ifdef _DEBUG
       FarSprintf(tmp_str, "LCtrl+%c Pressed", FKeyCode);
       DebugString(tmp_str);
 #endif // _DEBUG
     }
-    else if (FKeyCode == 'I' && CtrlPressed)
+    else if (FKeyCode == 'I' && CtrlPressed && !AltPressed && !ShiftPressed)
     {
       DebugString("Ctrl-I pressed");
       if (FEditorState == esStateNormal)
