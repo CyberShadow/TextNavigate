@@ -13,8 +13,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="C:\Program Files\Far1973\Plugins\TextNavigate"
-			IntermediateDirectory="C:\Program Files\Far1973\Plugins\TextNavigate"
+			OutputDirectory="..\bin"
+			IntermediateDirectory="..\bin"
 			ConfigurationType="2"
 			UseOfMFC="0"
 			CharacterSet="0">
@@ -73,7 +73,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="C:\Program Files\Far2051\Plugins\TextNavigate"
+			OutputDirectory="..\bin"
 			IntermediateDirectory="Release"
 			ConfigurationType="2"
 			UseOfMFC="2"

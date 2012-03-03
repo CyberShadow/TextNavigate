@@ -1,4 +1,9 @@
 *.dll
+*.map
+*.pdb
+*.lib
+*.manifest
+*.exp
 *.cache
 src/Debug
 src/Release
