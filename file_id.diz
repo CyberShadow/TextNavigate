@@ -1,0 +1,16 @@
+Text Navigator plugin for FAR 1.70b5+
+version 0.3
+15 Jan 2006
+-------------------------------------
+Author       : Michael Lukashov
+E-mail       : ice_scream@pochtamt.ru
+-------------------------------------
+(en)
+This plugin adds several helpful text 
+navigation methods for FAR built-in 
+editor.
+
+(ru)
+Этот плагин позволяет использовать 
+дополнительные методы навигации
+по тексту во внутреннем редакторе FAR.

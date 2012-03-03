@@ -1,0 +1,12 @@
+LIBRARY "TextNavigate"
+
+EXPORTS
+SetStartupInfo=_SetStartupInfo@4
+GetPluginInfo=_GetPluginInfo@4
+GetMinFarVersion=_GetMinFarVersion@0
+OpenPlugin=_OpenPlugin@8
+ExitFAR=_ExitFAR@0
+Configure=_Configure@4
+ProcessEditorInput=_ProcessEditorInput@4
+ProcessEditorEvent=_ProcessEditorEvent@8
+DllMainCRTStartup=_DllMainCRTStartup@12

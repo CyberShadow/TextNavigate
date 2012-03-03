@@ -1,0 +1,17 @@
+<TextNavigate version="0.3">
+
+ <Language name="Perl" FileExts="*.pl,*.cgi,*.pm" Desc="Perl files">
+  <!-- LineComment>#</LineComment -->
+  <SpecVars>
+   <Var Name="PERL" Value="C:\Perl"/>
+  </SpecVars>
+
+  <SearchPaths Value="$(PERL)\site\lib\...;$(PERL)\lib\...;$(PERL)\eg\Core\..."/>
+
+  <GlobalProc Name="\w+"
+              Definition="/sub\s+(\b%MethodName%\B)/"
+              Implementation="/sub\s+(\b%MethodName%\B)/"/>
+ </Language>
+
+</TextNavigate>
+

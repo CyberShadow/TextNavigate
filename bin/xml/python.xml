@@ -1,0 +1,13 @@
+<TextNavigate version="0.3">
+
+ <Language name="Python" FileExts="*.py" ExcludedFileExts="*.pyc,*.pyo,*.pyd" Desc="Python files">
+  <!-- LineComment>#</LineComment -->
+  <SpecVars>
+   <Var Name="PYTHON" Value="C:\Python22"/>
+  </SpecVars>
+
+  <SearchPaths Value="$(PYTHON)\Lib\...;$(PYTHON)\Tools"/>
+ </Language>
+
+</TextNavigate>
+

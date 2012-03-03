@@ -1,0 +1,36 @@
+.Language=English,English
+
+"Text Navigator"
+
+"  Find word under cursor (Ctrl-Alt-&Down)"
+"  Find word under cursor (reverse) (Ctrl-Alt-&Up)"
+"  Open file under cursor (Ctrl-&Enter)"
+"&1 Find method implementation (Ctrl-Shift-Down)"
+"&2 Find method prototype (Ctrl-Shift-Up)"
+"  Add bookmark (Ctrl-K, Ctrl-&K)"
+"  Clean bookmarks (Ctrl-K, Ctrl-&N)"
+"  Move to next bookmark (Ctrl-K, Ctrl-&P)"
+"  Clear bookmarks (Ctrl-K, Ctrl-&L)"
+"  Incremental search (Ctrl-&I)"
+"  Push a new bookmark for the current position (Ctrl-K, Ctrl-&U)"
+"  Go to the last bookmark and \"forget\" it (Ctrl-K, Ctrl-&O)"
+"&0 Configuration..."
+"Text Navigator: Configuration"
+
+"&Active"
+"&Treat digits as letters"
+"&Case sensitive"
+"&Additional letters"
+"&Cyclic search"
+"&Search selected text"
+"Persistent &bookmarks"
+
+"Search result \"%s\""
+"%d file(s) found"
+
+"(Ctrl-K) pressed. Waiting..."
+"Incremental search: "
+
+"Save"
+"Cancel"
+""

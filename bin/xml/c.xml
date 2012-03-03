@@ -1,0 +1,13 @@
+<TextNavigate version="0.3">
+
+  <Language name="cpp" FileExts="*.cpp,*.c,*.cc,*.h,*.hpp,*.inc,*.stl" ExcludedFileExts="*.~*,*.bak" SourceFiles="*.c*" Headers="*.h*" Desc="C/C++ files">
+    <SpecVars>
+      <Var Name="BCB" Value="C:\Program Files\Borland\CBuilder6"/>
+      <Var Name="VC7" Value="C:\VSNET2003\Vc7"/>
+      <Var Name="VC8" Value="C:\VS2005\VC"/>
+    </SpecVars>
+    <SearchPaths Value="$(BCB)\Include\...;$(VC7)\Include\...;$(VC7)\PlatformSDK\Include\...;$(VC8)\include\...;$(VC8)\crt\src\...;$(VC8)\PlatformSDK\Include\..."/>
+  </Language>
+
+</TextNavigate>
+

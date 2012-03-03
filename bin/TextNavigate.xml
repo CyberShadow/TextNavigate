@@ -1,0 +1,9 @@
+<TextNavigate version="0.3">
+ 
+ <include file="xml\c.xml"/>
+ <include file="xml\python.xml"/>
+ <include file="xml\pascal.xml"/>
+ <include file="xml\perl.xml"/>
+
+ <SearchPaths value="%INCLUDE%"/>
+</TextNavigate>
