@@ -540,18 +540,18 @@ int CTextNavigate::strreplace(char *str, const char *pattern, const char *value)
 
   if (pattern_len > value_len)
   {
-    lstrcpyn(s, value, (int)value_len);
+    crt::lmemcpy(s, (void*)value, value_len);
     lstrcpy(s + value_len, s + pattern_len);
   }
   else if (pattern_len < value_len)
   {
     int s_len = lstrlen(s);
     crt::lmemmove(s + value_len, s + pattern_len, s_len - pattern_len + 1);
-    lstrcpyn(s, value, (int)value_len);
+    crt::lmemcpy(s, (void*)value, value_len);
     s[s_len + value_len - pattern_len+1] = 0;
   }
   else
-   lstrcpyn(s, value, (int)value_len);
+    crt::lmemcpy(s, (void*)value, value_len);
 
   return n_roundbrackets;
 } //strreplace
