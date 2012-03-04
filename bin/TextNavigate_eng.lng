@@ -22,7 +22,7 @@
 "&Case sensitive"
 "&Additional letters"
 "&Cyclic search"
-"&Search selected text"
+"Ctrl-Alt-Up/Down &jump to selection"
 "Persistent &bookmarks"
 
 "Search result \"%s\""
