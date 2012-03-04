@@ -265,6 +265,7 @@ int CTextNavigate::ProcessEditorInput(const INPUT_RECORD* Rec)
             else
             {
               //MessageBeep(0);
+              DrawTitle(true);
               FIncrementalSearchBufferEnd = FIncrementalSearchBuffer + BufferLength;
               *FIncrementalSearchBufferEnd = 0;
             }
@@ -1145,7 +1146,7 @@ void CTextNavigate::Pop()
     window->PopBookmark();
 } //Pop
 
-void CTextNavigate::DrawTitle()
+void CTextNavigate::DrawTitle(bool IncrementalSearchNotFound)
 {
   if (FEditorState == esCtrlKPressed)
   {
@@ -1156,6 +1157,8 @@ void CTextNavigate::DrawTitle()
   {
     string Title((const UCHAR*)get_msg(SIncrementalSearchTitle));
     Title += FIncrementalSearchBuffer;
+    if (IncrementalSearchNotFound)
+      Title += get_msg(SIncrementalSearchNotFound);
     Info.EditorControl(ECTL_SETTITLE, (char*)Title.get());
   }
   else

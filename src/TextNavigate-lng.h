@@ -31,6 +31,7 @@ enum
 
   SCtrlKPressed,
   SIncrementalSearchTitle,
+  SIncrementalSearchNotFound,
 
   SSave,
   SCancel,

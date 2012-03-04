@@ -435,7 +435,7 @@ class CTextNavigate
     int strreplace(char *str, const char *pattern, const char *value);
     void ReplaceSpecRegSymbols(char *str);
     int GetMatch(char *Match, const SMatches &m, const char *str, int n);
-    void DrawTitle();
+    void DrawTitle(bool IncrementalSearchNotFound=false);
 
     int do_search(const char* String, const char* substr, bool SearchUp, int begin_word_pos, int &CurLine, bool SearchSelection, bool casesensitive);
 
