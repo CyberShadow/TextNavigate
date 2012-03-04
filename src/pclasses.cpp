@@ -216,6 +216,7 @@ int CTextNavigate::ProcessEditorInput(const INPUT_RECORD* Rec)
       {
         if (lstrlen(FIncrementalSearchBuffer) < MAX_INCREMENTAL_SEARCH_LENGTH)
         {
+          int BufferLength = (int)(FIncrementalSearchBufferEnd - FIncrementalSearchBuffer);
           if (!ArrowKeysPressed)
           {
             if (KEY_BS == c)
@@ -244,6 +245,8 @@ int CTextNavigate::ProcessEditorInput(const INPUT_RECORD* Rec)
             FPrevKeyCode = 0;
             bool Upward = ArrowKeysPressed ? KeyCode == KEY_UP || KeyCode == KEY_LEFT : false;
             int CurPos = EInfo.CurPos && !Upward ? EInfo.CurPos - 1 : EInfo.CurPos - 1;
+            if (!ArrowKeysPressed)
+              CurPos -= BufferLength; // continue completing word on cursor
             int pos_found;
             if ((pos_found = do_search(EStr.StringText, FIncrementalSearchBuffer,
                                        Upward, CurPos, CurLine, true, false)) != -1)
@@ -258,6 +261,12 @@ int CTextNavigate::ProcessEditorInput(const INPUT_RECORD* Rec)
               int Len = lstrlen(FIncrementalSearchBuffer);
               SelectFound(CurLine, pos_found, Len);
               set_cursor_pos(pos_found + Len, CurLine, &EInfo);
+            }
+            else
+            {
+              //MessageBeep(0);
+              FIncrementalSearchBufferEnd = FIncrementalSearchBuffer + BufferLength;
+              *FIncrementalSearchBufferEnd = 0;
             }
             return 1;
           }
